@@ -1,36 +1,95 @@
-# Patient Management System
+🏥 Agnos Realtime Patient System
 
-Realtime Patient Management System built with **Next.js**, **React**, **Tailwind CSS**, and **mock socket** for demo purposes.  
+ระบบจัดการข้อมูลผู้ป่วยพร้อมอัปเดตแบบ Real-Time (MockSocket Version)
 
----
+Demo: https://agnos-realtime-patient-system-wzew.vercel.app/
 
-## Features
+Repository: https://github.com/PhawinTS/agnos-realtime-patient-system
 
-- 📝 **Patient Registration Form** – กรอกข้อมูลผู้ป่วยครบถ้วน  
-- ⚡ **Realtime Updates** – อัปเดตสถานะและข้อมูลผู้ป่วยแบบ realtime  
-- 📋 **Patient List** – แสดงรายการผู้ป่วย พร้อม status และ last activity  
-- 📱 **Responsive Design** – รองรับ desktop, tablet, mobile  
+📌 Overview
 
----
+โปรเจกต์นี้เป็นระบบสำหรับจัดการข้อมูลผู้ป่วย (Patient Management) ที่รองรับการอัปเดตข้อมูลแบบ Real-Time ผ่าน MockSocket (จำลอง WebSocket) เพื่อให้แสดงผลเหมือนระบบ Production ที่ใช้ WebSocket จริง
+สร้างด้วย Next.js + TypeScript + TailwindCSS และโครงสร้างแบบ Component-Based
 
-## Tech Stack
+🚀 Features
 
-- **Next.js 16**, **React 18**, **Tailwind CSS**  
-- **Lucide-React** (Icons)  
-- **TypeScript**  
-- **Mock Socket** for realtime updates  
+แสดงรายชื่อผู้ป่วยทั้งหมด
 
----
+ดูข้อมูลรายละเอียดผู้ป่วย
 
-## Getting Started
+แก้ไขข้อมูลผู้ป่วย
 
-```bash
-# Clone repository
-git clone https://github.com/yourusername/patient-management-system.git
-cd patient-management-system
+อัปเดตข้อมูลแบบ Real-Time ผ่าน MockSocket
 
-# Install dependencies
+UI/UX ใช้งานง่าย รองรับทุกอุปกรณ์ (Responsive)
+
+🛠️ Tech Stack
+
+Next.js 14 (App Router)
+
+TypeScript
+
+Tailwind CSS
+
+MockSocket (ใช้แทน WebSocket จริง)
+
+Shadcn UI Components
+
+Deployed ด้วย Vercel
+
+📂 Project Structure
+/
+├─ app/
+│  ├─ api/               # Mock API
+│  ├─ patient/[id]/      # หน้ารายละเอียดผู้ป่วย
+│  ├─ page.tsx           # หน้า patient list
+│  ├─ layout.tsx
+│  └─ globals.css
+├─ components/           # UI components
+├─ lib/
+│  ├─ socketClient.ts      # Mock WebSocket Logic
+│  └─ api.ts    
+├─ server/               # Mock Data (JSON)
+├─ package.json
+└─ README.md
+
+🔌 Real-Time Update Flow (MockSocket)
+
+user แก้ไขข้อมูลผู้ป่วย
+
+กด Save → ส่ง event ผ่าน mockSocket.emit("patient:update")
+
+mockSocket กระจายข้อมูลไป component อื่น ๆ
+
+UI ทุกหน้าอัปเดตทันทีแบบ Real-Time
+
+เหมือนใช้ WebSocket จริง แต่ไม่ต้องมี backend
+
+🧩 ตัวอย่างการใช้งาน MockSocket
+const socket = getSocket();
+
+socket.emit("patient:update", updatedPatient);
+
+socket.on("patient:update", (data) => {
+  updateLocalStore(data);
+});
+
+🛠️ How to Run Locally
+git clone https://github.com/PhawinTS/agnos-realtime-patient-system.git
+cd agnos-realtime-patient-system
 npm install
-
-# Run dev server
 npm run dev
+
+
+เปิดที่:
+http://localhost:3000
+
+🧾 Deployment
+
+Deploy ผ่าน Vercel → พร้อมใช้งานทันที
+Live Demo: https://agnos-realtime-patient-system-wzew.vercel.app/
+
+📄 Author
+
+Phawin Thongsen (Yim)
+Front-End Developer
