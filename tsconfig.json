@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "lib/socketClient.ts", "lib/api.ts"  ],
   "exclude": ["node_modules"]
 }
