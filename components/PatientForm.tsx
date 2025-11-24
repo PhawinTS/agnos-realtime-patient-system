@@ -89,7 +89,7 @@ export default function PatientForm({ onSubmit }: Props) {
 
     const newPatient: Patient = {
       ...formData,
-      id: sessionId,
+      id: Number(sessionId),
       timestamp: new Date().toISOString(),
       status: 'submitted',
       lastActivity: new Date().toISOString(),
